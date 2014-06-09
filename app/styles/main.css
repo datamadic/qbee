@@ -118,6 +118,11 @@ body {
 #cube .top    { transform: rotateX(  90deg ) translateZ( 100px ); }
 #cube .bottom { transform: rotateX( -90deg ) translateZ( 100px ); }
 
+.triangle .front  { transform: rotateY(   0deg ) translateZ( 100px ); }
+.triangle .back   { transform: rotateX( 120deg ) translateZ( 100px ); }
+.triangle .right  { transform: rotateY( 240deg ) translateZ( 100px ); }
+
+
 #cube { transform: translateZ( -100px ); }
 
 #cube.show-front  { transform: translateZ( -100px ) rotateY(    0deg ); }
