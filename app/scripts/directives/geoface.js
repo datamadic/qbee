@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('qbeeApp')
-  .directive('cubeface', function () {
+  .directive('geoface', function () {
     return {
       template: '<figure><div ng-transclude></div></figure>',
       restrict: 'E',
