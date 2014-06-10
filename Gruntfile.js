@@ -27,6 +27,10 @@ module.exports = function (grunt) {
 
     // Watches files for changes and runs tasks based on the changed files
     watch: {
+      css: {
+        files: '<%= yeoman.app %>/sass/*.scss',
+        tasks: ['compass']
+      },
       bower: {
         files: ['bower.json'],
         tasks: ['bowerInstall']
@@ -66,7 +70,7 @@ module.exports = function (grunt) {
       options: {
         port: 9000,
         // Change this to '0.0.0.0' to access the server from outside.
-        hostname: 'localhost',
+        hostname: '0.0.0.0',
         livereload: 35729
       },
       livereload: {
@@ -350,8 +354,15 @@ module.exports = function (grunt) {
           'app/index.html'
         ]
       }
+    },
+    compass: {
+      dist: {
+        options: {
+          sassDir: '<%= yeoman.app %>/sass',
+          cssDir: '<%= yeoman.app %>/styles'
+        }
+      }
     }
-
 
   });
 

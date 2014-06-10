@@ -8,7 +8,7 @@ angular.module('qbeeApp')
       transclude: true,
       replace : true,
       link: function postLink(scope, element, attrs) {
-        // element.text('this is the cubeface directive');
+
       }
     };
   });

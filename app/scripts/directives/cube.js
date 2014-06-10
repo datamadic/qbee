@@ -17,7 +17,6 @@ angular.module('qbeeApp')
 
 
         angular.forEach(element.children().children().children().children(), function(face){
-          console.log('this is the face', face, degs, faces);
           angular.element(face).css('transform', 'rotateY(  '+ degs +'deg ) translateZ( 100px )');
           degs = degs + rotation;
         });
@@ -26,6 +25,8 @@ angular.module('qbeeApp')
           element.children().children().first().css('transform', 'translateZ( -100px ) rotateY(   '+rotation+'deg )');
           rotation = rotation + 90;
         };
+
+
 
       }//end link
     };
