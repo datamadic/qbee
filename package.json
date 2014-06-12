@@ -28,7 +28,8 @@
     "time-grunt": "~0.2.1",
     "grunt-wiredep": "^1.7.1",
     "grunt-contrib-sass": "^0.7.3",
-    "grunt-contrib-compass": "^0.8.0"
+    "grunt-contrib-compass": "^0.8.0",
+    "grunt-html": "^1.4.0"
   },
   "engines": {
     "node": ">=0.10.0"

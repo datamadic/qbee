@@ -1,4 +1,11 @@
-<div>
-  {{rowMap}}
-  <div ng-transclude></div>
+<div class="faces" ng-click="youMoveMe();">
+
+  <n_cube_face
+    ng-repeat="row in rowMap"
+    rows="row"
+    class="face-{{$index}} {{row.transitionCSS}}"
+    ng-show="showFace($index)"></n_cube_face>
+
+
+
 </div>

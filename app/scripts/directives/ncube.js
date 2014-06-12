@@ -1,65 +1,69 @@
 'use strict';
 
 angular.module('qbeeApp')
-  .directive('nCube', function ($compile) {
+  .directive('nCube', function ($compile, $timeout) {
     return {
       templateUrl: './templates/ncube.html',
       restrict: 'E',
       scope : {
         faces : '='
       },
-      transclude: true,
+      transclude: false,
+      //replace : true,
       link: function postLink(scope, element, attrs) {
-        //element.text('this is the nCube directive'+ scope.faces);
-        //console.log('this is the element', element);
-        console.log(element[0].querySelectorAll('.geoface'));
-        var geofaces = [{
-          name : 'first face',
-          rows : [{
-            name : 'usd',
-            value : 123
-          },{
-            name : 'rub',
-            value : 308
-          }]
-        },
-        {
-          name : 'second face',
-          rows : [{
-            name : 'jay',
-            value : 243
-          },{
-            name : 'fra',
-            value : 100
-          }]
-        },
-        {
-          name : 'seconed face',
-          rows : [{
-            name : 'eur',
-            value : 900
-          }]
-        }];
 
-        scope.rowMap = geofaces.map(function(item, index){
+        var mapLength = scope.faces.length,
+            theFaces = element.children()[0].children,
+            el,
+            faces = element[0].querySelector('.faces'),
+            degs = 0,
+            rotate90 = 90,
+            transitions = [' left ', ' back ', ' right ', ' front '],
+            transIterator = 0;
+
+
+        scope.rowMap = scope.faces.map(function(item, index){
           console.log(item, index);
-          return item.rows;
+          return {
+            name : item.name,
+            row : item.rows,
+            currentFace : !index,
+            next : (index + 1 === mapLength ) ? 0 : index + 1,
+            prev : (index === 0 ) ? mapLength - 1 : index - 1,
+            transitionCSS : !index ? ' front ' : '',
+            moving : false
+          };
         });
 
-        //console.log('the rows ', rowMap);
+        scope.currentFace = scope.rowMap[0];
 
-        scope.surely = function(){
-          console.log('waka waka')
+
+        scope.showFace = function(index) {
+          return (scope.rowMap[index].moving || scope.rowMap[index].currentFace);
         };
 
-        var el = $compile( '<n_cube_face rows="rowMap"></n_cube_face>' )( scope );
-        element.parent().append( el );
 
-        //console.log(angular.element('<div ng-click="surely()">just a little something</div>'));
+        scope.youMoveMe = function() {
+          var incommingFace = scope.rowMap[scope.currentFace.next];
 
+          incommingFace.currentFace = true;
 
+          incommingFace.transitionCSS = transitions[transIterator % 4];
+          transIterator++;
 
-        console.log('these are the geofaces', geofaces);
+          degs += rotate90;
+          angular.element(faces).css('transform', 'rotateY(  '+degs+'deg ) translateZ(0px )');
+
+          scope.currentFace = scope.rowMap[scope.currentFace.next];
+
+        }
+
       }//end postLink
     };
   });
+
+        // for(var i = 0, len = scope.rowMap.length; i < len; i++) {
+        //   console.log('in the for', scope.rowMap[i]);
+        //   el = $compile( '<n_cube_face rows="rowMap['+i+']"></n_cube_face>' )( scope );
+        //   angular.element(faces).append( el );
+        // }

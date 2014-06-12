@@ -50,66 +50,66 @@
   transition: transform 2s ease-in-out;
 }
 
-/* line 60, ../sass/style.scss */
+/*#cube .front  {@include transform(rotate3d(  0, 1, 0, 0deg )   translateZ( 100px ))}
+#cube .back   {@include transform(rotate3d(  1, 0, 0, 180deg )   translateZ( 100px ))}
+#cube .right  {@include transform(rotate3d(  0, 1, 0, 90deg )   translateZ( 100px ))}
+#cube .left   {@include transform(rotate3d(  0, 1, 0, -90deg )  translateZ( 100px ))}
+#cube .top    {@include transform(rotate3d(  1, 0, 0, 90deg )  translateZ( 100px ))}
+#cube .bottom {@include transform(rotate3d(  1, 0, 0, -90deg )  translateZ( 100px ))}*/
+/* line 70, ../sass/style.scss */
 #cube .front {
-  -webkit-transform: rotate3d(0, 1, 0, 0deg) translateZ(100px);
-  -moz-transform: rotate3d(0, 1, 0, 0deg) translateZ(100px);
-  -ms-transform: rotate3d(0, 1, 0, 0deg) translateZ(100px);
-  -o-transform: rotate3d(0, 1, 0, 0deg) translateZ(100px);
-  transform: rotate3d(0, 1, 0, 0deg) translateZ(100px);
+  -webkit-transform: rotateY(0deg) translateZ(100px);
+  -moz-transform: rotateY(0deg) translateZ(100px);
+  -ms-transform: rotateY(0deg) translateZ(100px);
+  -o-transform: rotateY(0deg) translateZ(100px);
+  transform: rotateY(0deg) translateZ(100px);
 }
 
-/* line 61, ../sass/style.scss */
+/* line 71, ../sass/style.scss */
 #cube .back {
-  -webkit-transform: rotate3d(1, 0, 0, 180deg) translateZ(100px);
-  -moz-transform: rotate3d(1, 0, 0, 180deg) translateZ(100px);
-  -ms-transform: rotate3d(1, 0, 0, 180deg) translateZ(100px);
-  -o-transform: rotate3d(1, 0, 0, 180deg) translateZ(100px);
-  transform: rotate3d(1, 0, 0, 180deg) translateZ(100px);
+  -webkit-transform: rotateX(180deg) translateZ(100px);
+  -moz-transform: rotateX(180deg) translateZ(100px);
+  -ms-transform: rotateX(180deg) translateZ(100px);
+  -o-transform: rotateX(180deg) translateZ(100px);
+  transform: rotateX(180deg) translateZ(100px);
 }
 
-/* line 62, ../sass/style.scss */
+/* line 72, ../sass/style.scss */
 #cube .right {
-  -webkit-transform: rotate3d(0, 1, 0, 90deg) translateZ(100px);
-  -moz-transform: rotate3d(0, 1, 0, 90deg) translateZ(100px);
-  -ms-transform: rotate3d(0, 1, 0, 90deg) translateZ(100px);
-  -o-transform: rotate3d(0, 1, 0, 90deg) translateZ(100px);
-  transform: rotate3d(0, 1, 0, 90deg) translateZ(100px);
+  -webkit-transform: rotateY(90deg) translateZ(100px);
+  -moz-transform: rotateY(90deg) translateZ(100px);
+  -ms-transform: rotateY(90deg) translateZ(100px);
+  -o-transform: rotateY(90deg) translateZ(100px);
+  transform: rotateY(90deg) translateZ(100px);
 }
 
-/* line 63, ../sass/style.scss */
+/* line 73, ../sass/style.scss */
 #cube .left {
-  -webkit-transform: rotate3d(0, 1, 0, -90deg) translateZ(100px);
-  -moz-transform: rotate3d(0, 1, 0, -90deg) translateZ(100px);
-  -ms-transform: rotate3d(0, 1, 0, -90deg) translateZ(100px);
-  -o-transform: rotate3d(0, 1, 0, -90deg) translateZ(100px);
-  transform: rotate3d(0, 1, 0, -90deg) translateZ(100px);
+  -webkit-transform: rotateY(-90deg) translateZ(100px);
+  -moz-transform: rotateY(-90deg) translateZ(100px);
+  -ms-transform: rotateY(-90deg) translateZ(100px);
+  -o-transform: rotateY(-90deg) translateZ(100px);
+  transform: rotateY(-90deg) translateZ(100px);
 }
 
-/* line 64, ../sass/style.scss */
+/* line 74, ../sass/style.scss */
 #cube .top {
-  -webkit-transform: rotate3d(1, 0, 0, 90deg) translateZ(100px);
-  -moz-transform: rotate3d(1, 0, 0, 90deg) translateZ(100px);
-  -ms-transform: rotate3d(1, 0, 0, 90deg) translateZ(100px);
-  -o-transform: rotate3d(1, 0, 0, 90deg) translateZ(100px);
-  transform: rotate3d(1, 0, 0, 90deg) translateZ(100px);
+  -webkit-transform: rotateX(90deg) translateZ(100px);
+  -moz-transform: rotateX(90deg) translateZ(100px);
+  -ms-transform: rotateX(90deg) translateZ(100px);
+  -o-transform: rotateX(90deg) translateZ(100px);
+  transform: rotateX(90deg) translateZ(100px);
 }
 
-/* line 65, ../sass/style.scss */
+/* line 75, ../sass/style.scss */
 #cube .bottom {
-  -webkit-transform: rotate3d(1, 0, 0, -90deg) translateZ(100px);
-  -moz-transform: rotate3d(1, 0, 0, -90deg) translateZ(100px);
-  -ms-transform: rotate3d(1, 0, 0, -90deg) translateZ(100px);
-  -o-transform: rotate3d(1, 0, 0, -90deg) translateZ(100px);
-  transform: rotate3d(1, 0, 0, -90deg) translateZ(100px);
+  -webkit-transform: rotateX(-90deg) translateZ(100px);
+  -moz-transform: rotateX(-90deg) translateZ(100px);
+  -ms-transform: rotateX(-90deg) translateZ(100px);
+  -o-transform: rotateX(-90deg) translateZ(100px);
+  transform: rotateX(-90deg) translateZ(100px);
 }
 
-/*#cube .front  { @include transform( rotateY(   0deg ) translateZ( 100px ) ) }
-#cube .back   { @include transform( rotateX( 180deg ) translateZ( 100px ) ) }
-#cube .right  { @include transform( rotateY(  90deg ) translateZ( 100px ) ) }
-#cube .left   { @include transform( rotateY( -90deg ) translateZ( 100px ) ) }
-#cube .top    { @include transform( rotateX(  90deg ) translateZ( 100px ) ) }
-#cube .bottom { @include transform( rotateX( -90deg ) translateZ( 100px ) ) }*/
 /*
 #cube.show-front  { @include transform( translateZ( -100px ) rotateY(    0deg )  ) }
 #cube.show-back   { @include transform( translateZ( -100px ) rotateX( -180deg )  ) }
@@ -141,3 +141,140 @@
 #cube.show-top    { transform: translateZ( -100px ) rotateX(  -90deg ); }
 #cube.show-bottom { transform: translateZ( -100px ) rotateX(   90deg ); }
 */
+/* line 115, ../sass/style.scss */
+.ncubeface {
+  width: 150px;
+  height: 200px;
+  background-color: gray;
+  outline: 2px solid #222;
+}
+
+/* line 121, ../sass/style.scss */
+.nheader {
+  background-color: black;
+  color: whitesmoke;
+  padding: 0 10px;
+}
+
+/* line 126, ../sass/style.scss */
+.nbody {
+  padding: 0 10px;
+}
+
+/* line 130, ../sass/style.scss */
+.nrow {
+  padding: 10px 0;
+  border-bottom: 2px solid darkgreen;
+}
+
+/* line 135, ../sass/style.scss */
+.ncubeface {
+  position: absolute;
+}
+
+/* line 139, ../sass/style.scss */
+.ncube-container {
+  width: 150px;
+  height: 200px;
+  position: relative;
+  perspective: 1000px;
+}
+
+/* line 146, ../sass/style.scss */
+.cube, .prism {
+  width: 150px;
+  height: 200px;
+  position: absolute;
+  transform-style: preserve-3d;
+}
+
+/*.cube figure,
+.prism figure {
+  width: 196px;
+  height: 196px;
+  display: block;
+  position: absolute;
+  border: 2px solid black;
+}*/
+/* line 162, ../sass/style.scss */
+.faces {
+  width: 150px;
+  height: 200px;
+  position: absolute;
+  transform-style: preserve-3d;
+}
+
+/* line 170, ../sass/style.scss */
+.faces .front {
+  transform: rotateY(0deg) translateZ(75px);
+}
+
+/* line 171, ../sass/style.scss */
+.faces .back {
+  transform: rotateY(180deg) translateZ(75px);
+}
+
+/* line 172, ../sass/style.scss */
+.faces .right {
+  transform: rotateY(90deg) translateZ(75px);
+}
+
+/* line 173, ../sass/style.scss */
+.faces .left {
+  transform: rotateY(-90deg) translateZ(75px);
+}
+
+/* line 174, ../sass/style.scss */
+.faces .top {
+  transform: rotateX(90deg) translateZ(75px);
+}
+
+/* line 175, ../sass/style.scss */
+.faces .bottom {
+  transform: rotateX(-90deg) translateZ(75px);
+}
+
+/* line 178, ../sass/style.scss */
+.cube {
+  transform: translateZ(-75px);
+}
+
+/* line 179, ../sass/style.scss */
+.prism {
+  transform: translateZ(-86px);
+}
+
+/* line 181, ../sass/style.scss */
+.faces.show-front {
+  transform: translateZ(-75px) rotateY(0deg);
+}
+
+/* line 182, ../sass/style.scss */
+.faces.show-back {
+  transform: translateZ(-75px) rotateX(-180deg);
+}
+
+/* line 183, ../sass/style.scss */
+.faces.show-right {
+  transform: translateZ(-75px) rotateY(-90deg);
+}
+
+/* line 184, ../sass/style.scss */
+.faces.show-left {
+  transform: translateZ(-75px) rotateY(90deg);
+}
+
+/* line 185, ../sass/style.scss */
+.faces.show-top {
+  transform: translateZ(-75px) rotateX(-90deg);
+}
+
+/* line 186, ../sass/style.scss */
+.faces.show-bottom {
+  transform: translateZ(-75px) rotateX(90deg);
+}
+
+/* line 188, ../sass/style.scss */
+.faces {
+  transition: transform 1s;
+}

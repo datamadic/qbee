@@ -42,6 +42,10 @@ module.exports = function (grunt) {
           livereload: true
         }
       },
+      htmlcheck : {
+          files : ['<%= yeoman.app %>/**/*.html'],
+          tasks : ['htmllint']
+      },
       jsTest: {
         files: ['test/spec/{,*/}*.js'],
         tasks: ['newer:jshint:test', 'karma']
@@ -362,6 +366,9 @@ module.exports = function (grunt) {
           cssDir: '<%= yeoman.app %>/styles'
         }
       }
+    },
+    htmllint: {
+      all: ['<%= yeoman.app %>/**/*.html']
     }
 
   });
