@@ -1,4 +1,4 @@
-<div class="faces" ng-click="youMoveMe();">
+<div class="faces" ng-click="youMoveMe();" ng-swipe-right="youMoveMe();">
 
   <n_cube_face
     ng-repeat="row in rowMap"
@@ -6,6 +6,7 @@
     class="face-{{$index}} {{row.transitionCSS}}"
     ng-show="showFace($index)"></n_cube_face>
 
-
+    events: <br>
+    {{es}}
 
 </div>
