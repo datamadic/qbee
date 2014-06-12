@@ -23,7 +23,7 @@ angular.module('qbeeApp')
 
 
         scope.rowMap = scope.faces.map(function(item, index){
-          console.log(item, index);
+          //console.log(item, index);
           return {
             name : item.name,
             row : item.rows,
@@ -58,8 +58,9 @@ angular.module('qbeeApp')
 
 
 
-        scope.youMoveMe = function() {
+        var calls = 0;
 
+        scope.youMoveMe = function(direction) {
 
           var incommingFace = scope.rowMap[scope.currentFace.next];
 
@@ -67,15 +68,51 @@ angular.module('qbeeApp')
 
           incommingFace.moving = true;
 
-          incommingFace.transitionCSS = transitions[transIterator % 4];
-          transIterator++;
 
-          degs += rotate90;
-          angular.element(faces).css('transform', 'rotateY(  '+degs+'deg ) translateZ(0px )');
+          if (direction === 'right'){
+            degs += rotate90;
+            transIterator++;
+          }
+          else {
+            degs -= rotate90;
+            transIterator--;
+          }
+
+          //console.log(getRotatedRightLeft(degs));
+
+          incommingFace.transitionCSS = getRotatedRightLeft(degs);
+          // console.log('this is the trans', transitions[transIterator % 4]);
+          // transIterator++;
+
+          angular.element(faces).css('transform', 'rotateY(  '+degs+'deg ) translateZ( 0px )');
 
           scope.currentFace = scope.rowMap[scope.currentFace.next];
 
-        }
+          //console.log('the calls',calls++);
+          //alert('events: '+ calls++ );
+
+        };
+
+        function getRotatedRightLeft (degrees) {
+          var realRotation = degrees % 360,
+              direction;
+
+
+          switch (realRotation){
+            case 0 : direction =  ' front '; break;
+            case 90 : direction =  ' left '; break;
+            case 180 : direction =  ' back '; break;
+            case 270 : direction =  ' right '; break;
+            case -360 : direction =  ' front '; break;
+            case -90 : direction =  ' right '; break;
+            case -180 : direction =  ' back '; break;
+            case -270 : direction =  ' left '; break;
+            default : direction =  '';
+          }
+
+          console.log('calc off rotation', realRotation ,direction);
+          return direction;
+        }//end getRoatedRightLeft
 
       }//end postLink
     };

@@ -1,12 +1,19 @@
-<div class="faces" ng-click="youMoveMe();" ng-swipe-right="youMoveMe();">
+<div ng-click="youMoveMe();"
+     ng-swipe-right="youMoveMe('right');"
+     ng-swipe-left="youMoveMe();"
+     class="face-holder">
 
-  <n_cube_face
-    ng-repeat="row in rowMap"
-    rows="row"
-    class="face-{{$index}} {{row.transitionCSS}}"
-    ng-show="showFace($index)"></n_cube_face>
+  <div class="faces"  >
 
-    events: <br>
-    {{es}}
+    <n_cube_face
+      ng-repeat="row in rowMap"
+      rows="row"
+      class="face-{{$index}} {{row.transitionCSS}}"
+      ng-show="showFace($index)"></n_cube_face>
+
+  </div>
+
+  <div class="clearfix"></div>
 
 </div>
+

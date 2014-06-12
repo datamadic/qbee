@@ -115,8 +115,9 @@
 .ncubeface {
   width : 150px;
   height: 200px;
-  background-color: gray;
+  /*background-color: gray;*/
   outline: 2px solid darkgreen;
+
 }
 .nheader {
   background-color: black;
@@ -150,20 +151,19 @@
   transform-style: preserve-3d;
 }
 
-/*.cube figure,
-.prism figure {
-  width: 196px;
-  height: 196px;
-  display: block;
-  position: absolute;
-  border: 2px solid black;
-}*/
 
 .faces {
   width: 150px;
   height: 200px;
   position: absolute;
   transform-style: preserve-3d;
+
+}
+.face-holder {
+  display: block;
+  position: relative;
+  width: 150px;
+  height: 200px;
 }
 
 
@@ -185,7 +185,7 @@
 .faces.show-top    { transform: translateZ( -75px ) rotateX(  -90deg ); }
 .faces.show-bottom { transform: translateZ( -75px ) rotateX(   90deg ); }
 
-.faces { transition: transform 1s; }
+.faces { transition: transform .9s; }
 
 
 
