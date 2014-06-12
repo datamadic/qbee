@@ -31,6 +31,7 @@ angular.module('qbeeApp')
             next : (index + 1 === mapLength ) ? 0 : index + 1,
             prev : (index === 0 ) ? mapLength - 1 : index - 1,
             transitionCSS : !index ? ' front ' : '',
+            index : index,
             moving : false
           };
         });
@@ -43,10 +44,28 @@ angular.module('qbeeApp')
         };
 
 
+        function clearNotTrans() {
+          var index = scope.currentFace.index,
+              prev = scope.currentFace.prev;
+
+          for (var f in scope.rowMap) {
+            if (!(scope.rowMap[f].index === index || scope.rowMap[f].prev === index)) {
+              scope.rowMap[f].currentFace = false;
+              scope.rowMap[f].moving = false;
+            }
+          }
+        }
+
+
+
         scope.youMoveMe = function() {
+
+
           var incommingFace = scope.rowMap[scope.currentFace.next];
 
-          incommingFace.currentFace = true;
+          clearNotTrans();
+
+          incommingFace.moving = true;
 
           incommingFace.transitionCSS = transitions[transIterator % 4];
           transIterator++;
