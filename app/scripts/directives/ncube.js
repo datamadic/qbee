@@ -6,11 +6,21 @@ angular.module('qbeeApp')
       templateUrl: './templates/ncube.html',
       restrict: 'E',
       scope : {
-        faces : '='
+        faces : '=',
+        cdir : '='
       },
       transclude: false,
       //replace : true,
       link: function postLink(scope, element, attrs) {
+
+        console.log('this is the cdir', scope.cdir);
+
+        scope.$watch('cdir',function(oldVal, newVal){
+          // console.log(newVal, typeof newVal);
+          // var inDir = ((oldVal + 1 ) == newVal ) ? 'prev' : 'next';
+          scope.youMoveMe('right');
+
+        })
 
         var mapLength = scope.faces.length,
             theFaces = element.children()[0].children,
@@ -36,35 +46,52 @@ angular.module('qbeeApp')
           };
         });
 
-        scope.currentFace = scope.rowMap[0];
+        scope.currentFace = 0;
 
 
         scope.showFace = function(index) {
-          return (scope.rowMap[index].moving || scope.rowMap[index].currentFace);
+          return (scope.rowMap[index].moving || (scope.currentFace === index));
         };
 
 
-        function clearNotTrans() {
-          var index = scope.currentFace.index,
-              prev = scope.currentFace.prev;
+        function clearNotTrans(direction) {
+          var index = scope.currentFace,
+              dir = scope.rowMap[scope.currentFace][direction][direction];
+
+
 
           for (var f in scope.rowMap) {
-            if (!(scope.rowMap[f].index === index || scope.rowMap[f].prev === index)) {
+            if (!(scope.rowMap[f].index === index || scope.rowMap[f].index === dir)) {
               scope.rowMap[f].currentFace = false;
               scope.rowMap[f].moving = false;
             }
+            else {
+              console.log('the elses', scope.rowMap[f]);
+              scope.rowMap[f].moving = true;
+            }
           }
+
+          console.log('the scope',index, 'the direction ',direction,dir, scope.currentFace,'all of em', scope.rowMap);
         }
 
 
 
-        var calls = 0;
-
         scope.youMoveMe = function(direction) {
 
-          var incommingFace = scope.rowMap[scope.currentFace.next];
+          console.log('youMoveMe called', direction);
 
-          clearNotTrans();
+          var nextCurrent;
+          if(direction) {
+            nextCurrent = 'prev';
+          }
+          else {
+            nextCurrent = 'next';
+          }
+
+          var incommingIndex = scope.rowMap[scope.currentFace][nextCurrent]
+          var incommingFace = scope.rowMap[incommingIndex];
+
+          clearNotTrans(nextCurrent);
 
           incommingFace.moving = true;
 
@@ -78,19 +105,13 @@ angular.module('qbeeApp')
             transIterator--;
           }
 
-          //console.log(getRotatedRightLeft(degs));
-
           incommingFace.transitionCSS = getRotatedRightLeft(degs);
-          // console.log('this is the trans', transitions[transIterator % 4]);
-          // transIterator++;
 
           angular.element(faces).css('transform', 'rotateY(  '+degs+'deg ) translateZ( 0px )');
 
-          scope.currentFace = scope.rowMap[scope.currentFace.next];
-
-          //console.log('the calls',calls++);
-          //alert('events: '+ calls++ );
-
+          //scope.currentFace.currentFace = false;
+          scope.currentFace = incommingIndex;
+         // scope.currentFace  = true ;
         };
 
         function getRotatedRightLeft (degrees) {

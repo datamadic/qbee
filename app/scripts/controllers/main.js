@@ -16,6 +16,16 @@ angular.module('qbeeApp')
 
     };
 
+    $scope.direction = 0;
+
+    $scope.goLeft = function(){
+      $scope.direction += 2;
+    };
+
+    $scope.goRight = function(){
+      $scope.direction += 1;
+    }
+
     $scope.geofaces = [{
           name : 'first face',
           rows : [{
